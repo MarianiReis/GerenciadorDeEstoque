@@ -1,5 +1,5 @@
 import sqlite3
-from database import conexao_db
+from Estoque.database import conexao_db
 
 def adicionar_fornecedor(nome, telefone):
     conexao = conexao_db()
