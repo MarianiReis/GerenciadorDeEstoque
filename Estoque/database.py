@@ -1,13 +1,15 @@
+import os 
 import sqlite3 
 
 def conexao_db():
-    conexao = sqlite3.connect('estoque.db') 
+    caminho_db = os.path.join(os.path.dirname(__file__), 'estoque.db')
+    conexao = sqlite3.connect(caminho_db) 
     return conexao
 
 def create_tables():
+
     conexao = conexao_db()
     cursor = conexao.cursor()
-
     cursor.execute ('''
         CREATE TABLE IF NOT EXISTS produto (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,11 +37,12 @@ def create_tables():
             quantidade INTEGER,
             FOREIGN KEY (venda_id) REFERENCES venda(id),
             FOREIGN KEY (produto_id) REFERENCES produto(id))''')
-
     
     conexao.commit()
     conexao.close()
-
+    
+    
+    
 
 if __name__ == '__main__':
     create_tables()
