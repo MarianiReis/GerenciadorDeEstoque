@@ -1,5 +1,5 @@
-from Estoque.controllers.produto_ctrl import adicionar_produto, listar_produtos, atualizar_produtos, deletar_produto
-from Estoque.controllers.fornecedor_ctrl import adicionar_fornecedor, listar_fornecedores, atualizar_fornecedor, deletar_fornecedor
+from controllers.produto_ctrl import adicionar_produto, listar_produtos, atualizar_produtos, deletar_produto
+from controllers.fornecedor_ctrl import adicionar_fornecedor, listar_fornecedores, atualizar_fornecedor, deletar_fornecedor
 
 
 def exibir_menu_opcoes(exibir_menu_produtos, exibir_menu_fornecedor):
