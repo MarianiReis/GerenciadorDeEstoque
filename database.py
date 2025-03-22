@@ -35,8 +35,8 @@ def create_tables():
             venda_id INTEGER,
             produto_id INTEGER,
             quantidade INTEGER,
-            FOREIGN KEY (venda_id) REFERENCES venda(id),
-            FOREIGN KEY (produto_id) REFERENCES produto(id))''')
+            FOREIGN KEY (venda_id) REFERENCES venda(id) ON DELETE CASCADE,
+            FOREIGN KEY (produto_id) REFERENCES produto(id)) ON DELETE CASCADE ''')
     
     conexao.commit()
     conexao.close()

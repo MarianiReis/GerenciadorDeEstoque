@@ -1,34 +1,41 @@
 import sqlite3
 from database import conexao_db
 
-def adicionar_venda(produto, valor):
+def adicionar_venda(data, total, produto_id, quantidade):
     conexao = conexao_db()
     cursor = conexao.cursor()
-    cursor.execute("INSERT INTO item_venda (data, total) VALUES (?)", (produto, valor))
+
+    cursor.execute("INSERT INTO venda (data, total) VALUES (?,?)", (data, total))
+    
+    venda_id = cursor.lastrowid
+
+    cursor.execute("INSERT INTO item_venda (venda_id, produto_id, quantidade) VALUES (?,?,?)", (venda_id, produto_id, quantidade))
 
     conexao.commit()
-    conexao.close()
+    conexao.close() 
+
 
 def listar_venda():
+
     conexao = conexao_db()
     cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM fornecedor")
-    fornecedores = cursor.fetchall()
-    conexao.close()
-    return fornecedores
 
-def atualizar_venda(id, nome, telefone):
-    conexao = conexao_db
-    cursor = conexao.conexao()
-    cursor.execute("UPDATE fornecedor SET nome = ?, telefone = ?, WHERE id = ?", (nome, telefone, id))
-    
-    conexao.commit()
+    cursor.execute("""
+        SELECT item_venda.id, venda.data, venda.total, item_venda.produto_id, item_venda.quantidade 
+        FROM item_venda
+        JOIN venda ON item_venda.venda_id = venda.id
+    """)
+    vendas = cursor.fetchall()
     conexao.close()
+    
+    return vendas
+
 
 def deletar_venda(id):
+
     conexao = conexao_db()
     cursor = conexao.cursor()
-    cursor.execute("DELETE FROM fornecedor WHERE id = ? ", (id,))
+    cursor.execute("DELETE FROM venda WHERE id = ? ", (id,))
     conexao.commit()
     conexao.close()
 
