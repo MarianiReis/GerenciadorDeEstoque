@@ -1,6 +1,6 @@
 from controllers.produto_ctrl import adicionar_produto, listar_produtos, atualizar_produtos, deletar_produto
 from controllers.fornecedor_ctrl import adicionar_fornecedor, listar_fornecedores, atualizar_fornecedor, deletar_fornecedor
-from estoque.database import create_tables
+from database import create_tables
 
 
 def exibir_menu_opcoes(exibir_menu_produtos, exibir_menu_fornecedor):
@@ -99,8 +99,7 @@ def exibir_menu_produtos():
             break 
         else: 
             print("Opção inválida! Tente novamente")
-            
+
 
 if __name__ == '__main__':
-    create_tables()
     exibir_menu_opcoes(exibir_menu_produtos, exibir_menu_fornecedor)

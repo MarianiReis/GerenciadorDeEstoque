@@ -1,5 +1,5 @@
 import sqlite3
-from estoque.database import conexao_db
+from database import conexao_db
 
 def adicionar_produto(nome, preco, quantidade):
     conexao = conexao_db()
