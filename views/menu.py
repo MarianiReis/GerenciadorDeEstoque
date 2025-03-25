@@ -155,35 +155,9 @@ def exibir_menu_vendas():
         elif opcao == '4': 
             print("Finalizando...")
             break 
-        
+
         else: 
             print("Opção inválida! Tente novamente")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
